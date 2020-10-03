@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:insta_clone/contents.dart';
 import 'package:insta_clone/domain/post_model.dart';
+import 'package:insta_clone/widgets/molecules/post_item.dart';
 
 class TimeLine extends StatefulWidget {
   TimeLine({Key key, this.title}) : super(key: key);
@@ -14,12 +14,12 @@ class _TimeLineState extends State<TimeLine> {
   ScrollController _scrollController;
   bool _isLoading = false;
 
-  List<String> _items;
+  List<PostModel> _items;
 
   @override
   void initState() {
-    _items = List<String>();
-    Contents.forEach((content) => _items.add(content));
+    _items = List<PostModel>();
+    PostModel.dummyData.forEach((content) => _items.add(content));
 
     _scrollController = ScrollController();
     _scrollController.addListener(() {
@@ -43,7 +43,7 @@ class _TimeLineState extends State<TimeLine> {
       body: ListView.builder(
         controller: _scrollController,
         itemBuilder: (context, index) {
-          return _buildListItemSample(_items[index]);
+          return PostItem(_items[index]);
         },
         itemCount: _items.length,
       ),
@@ -71,7 +71,7 @@ class _TimeLineState extends State<TimeLine> {
     _isLoading = true;
     Future.delayed(Duration(seconds: 2), () {
       setState(() {
-        Contents.forEach((content) => _items.add(content));
+        PostModel.dummyData.forEach((content) => _items.add(content));
       });
       _isLoading = false;
     });
