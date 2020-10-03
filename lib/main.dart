@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Flutter Demo',
       theme: new ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.black,
       ),
-      home: new TimeLine(title: 'Flutter Demo Home Page'),
+      home: new TimeLine(title: 'time line'),
     );
   }
 }
