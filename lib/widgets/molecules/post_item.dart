@@ -8,28 +8,34 @@ class PostItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        ListTile(
-          leading: CircleAvatar(
-            radius: 24.0,
-            backgroundImage: NetworkImage(model.userIcon),
+    return Container(
+      margin:EdgeInsets.all(8.0),
+      child: Column(
+        children: <Widget>[
+          ListTile(
+            leading: CircleAvatar(
+              radius: 24.0,
+              backgroundImage: NetworkImage(model.userIcon),
+            ),
+            title: Row(
+              children: <Widget>[
+                Text(model.userName),
+                SizedBox(
+                  width: 16.0,
+                ),
+              ],
+            ),
           ),
-          title: Row(
-            children: <Widget>[
-              Text(model.userName),
-              SizedBox(
-                width: 16.0,
-              ),
-            ],
+          Center(
+            child: Image(// Imageウィジェット
+              image: NetworkImage(model.postImage),// 表示したい画像
+              height: 400,
+              fit:BoxFit.fill
+            ),
           ),
-        ),
-        Center(
-          child: Image(// Imageウィジェット
-            image: NetworkImage(model.postImage),// 表示したい画像
-          ),
-        ),
-      ],
+          Text(model.postText != null ? model.postText : '...'),
+        ],
+      )
     );
   }
 }

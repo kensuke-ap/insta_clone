@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/domain/post_model.dart';
 import 'package:insta_clone/widgets/molecules/post_item.dart';
+import 'package:insta_clone/widgets/molecules/footer.dart';
 
 class TimeLine extends StatefulWidget {
   TimeLine({Key key, this.title}) : super(key: key);
@@ -47,20 +48,8 @@ class _TimeLineState extends State<TimeLine> {
         },
         itemCount: _items.length,
       ),
-    );
-  }
 
-  Widget _buildListItemSample(String content) {
-    return Container(
-      alignment: Alignment.centerLeft,
-      padding: EdgeInsets.all(12.0),
-      child: Text(content),
-    );
-  }
-
-  Widget _buildListItem(PostModel postModel) {
-    return Container(
-      child: Text(postModel.userName)
+      bottomNavigationBar: Footer(),
     );
   }
 
