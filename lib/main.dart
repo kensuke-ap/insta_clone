@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/pages/time_line.dart';
 import 'package:insta_clone/pages/neumorphic_app.dart';
+import 'package:insta_clone/pages/profile.dart';
+import 'package:insta_clone/pages/search_page.dart';
+import 'package:insta_clone/pages/activity_page.dart';
 
 void main() {
   runApp(MyApp());
+//  runApp(NeumorphicApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,9 +19,14 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primaryColor: Colors.black,
       ),
-//      home: new TimeLine(title: 'time line'),
-        home: new NeumorphicApp(),
-//        home: new MySmartHome(),
+      initialRoute: '/profile',
+      routes: {
+        '/home': (context) => TimeLine(title: 'time line'),
+//        '/exercise': (context) => BlocProvider(child: ExercisePage()),
+        '/profile': (context) => Profile(),
+        '/search': (context) => SearchPage(),
+        '/activity': (context) => ActivityPage(),
+      },
     );
   }
 }

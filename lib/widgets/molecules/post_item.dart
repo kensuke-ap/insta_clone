@@ -44,7 +44,41 @@ class PostItem extends StatelessWidget {
                 fit:BoxFit.fill
               ),
             ),
-            Text(model.postText != null ? model.postText : '...'),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    child: Row(
+                      children: [
+                        Icon(Icons.favorite_border),
+                        Icon(Icons.chat_bubble_outline),
+                        Icon(Icons.add_circle_outline),
+                      ],
+                    ),
+                  ),
+                  Icon(Icons.bookmark_border_outlined),
+                ],
+              ),
+            ),
+            Container(
+              child: Row(
+                children: [
+                  Text('いいね！：'),
+                  Text(model.like.toString()),
+                ],
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                child: Text(model.userName, textAlign: TextAlign.right),
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(model.postText != null ? model.postText : '...', textAlign: TextAlign.right),
+            ),
           ],
         )
       ),

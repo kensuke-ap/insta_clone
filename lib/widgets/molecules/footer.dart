@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insta_clone/enum/root_enum.dart';
 
 class Footer extends StatefulWidget{
   const Footer();
@@ -73,7 +74,33 @@ class _FooterState extends State<Footer> {
       _bottomNavigationBarItems[_selectedIndex] = _UpdateDeactiveState(_selectedIndex);
       _bottomNavigationBarItems[index] = _UpdateActiveState(index);
       _selectedIndex = index;
+
+      // indexをEnum化
+      var rootEnum = RootEnumExt.toRootEnum(_selectedIndex);
+
+      // 画面遷移
+      _rooting(rootEnum);
     });
+  }
+
+
+  void _rooting(RootEnum rootEnum) {
+    switch(rootEnum) {
+      case RootEnum.HOME:
+        Navigator.of(context).pushNamed(RootEnum.HOME.root);
+        break;
+      case RootEnum.SEARCH:
+        Navigator.of(context).pushNamed(RootEnum.SEARCH.root);
+        break;
+      case RootEnum.ACTIVITY:
+        Navigator.of(context).pushNamed(RootEnum.ACTIVITY.root);
+        break;
+      case RootEnum.PROFILE:
+        Navigator.of(context).pushNamed(RootEnum.PROFILE.root);
+        break;
+      default:
+        Navigator.of(context).pushNamed(RootEnum.HOME.root);
+    }
   }
 
   @override
