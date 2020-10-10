@@ -16,6 +16,7 @@ class SearchPage extends StatelessWidget {
             child: Column(
               children: [
                 _searchBar(),
+                _tagList(),
                 PostGrid(),
               ],
             ),
@@ -29,7 +30,10 @@ class SearchPage extends StatelessWidget {
     return Container(
         height: 80,
         child: SearchBar(
-              searchBarPadding: EdgeInsets.symmetric(horizontal: 10),
+              searchBarPadding: EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 0,
+              ),
               headerPadding: EdgeInsets.symmetric(horizontal: 10),
               listPadding: EdgeInsets.symmetric(horizontal: 10),
               emptyWidget: Text("empty"),
@@ -37,27 +41,42 @@ class SearchPage extends StatelessWidget {
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
               crossAxisCount: 2,
-              onItemFound: (Post post, int index) {
-                return Container(
-                  color: Colors.lightBlue,
-                  child: ListTile(
-                    title: Text(post.title),
-                    isThreeLine: true,
-                    subtitle: Text(post.body),
-                    onTap: () {
-                      print('onTap');
-                    },
-                  ),
-                );
-              },
           )
     );
   }
-}
 
-class Post {
-  final String title;
-  final String body;
+  Widget _tagList() {
+    return Container(
+      height: 50,
+      child: ListView(
+        // This next line does the trick.
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          _tagItem('a'),
+          _tagItem('b'),
+          _tagItem('b'),
+          _tagItem('d'),
+          _tagItem('e'),
+          _tagItem('f'),
+          _tagItem('g'),
+        ],
+      ),
+    );
+  }
 
-  Post(this.title, this.body);
+  Widget _tagItem(String tagName) {
+    return Container(
+        padding: EdgeInsets.only(top: 5.0, right: 2.5, bottom: 5.0, left: 2.5),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+        ),
+        child: Container(
+        width: 80.0,
+        color: Colors.grey,
+        child: Center(
+          child: Text(tagName),
+        ),
+      )
+    );
+  }
 }

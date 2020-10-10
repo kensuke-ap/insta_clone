@@ -11,7 +11,7 @@ class PostGrid extends StatelessWidget {
               crossAxisCount: 3,
               mainAxisSpacing: 4,
               crossAxisSpacing: 4,
-              children: List.generate(18, (index) {
+              children: List.generate(44, (index) {
                 return Column(
                   children: [
                     Expanded(
