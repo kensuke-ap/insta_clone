@@ -39,7 +39,12 @@ class _TimeLineState extends State<TimeLine> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Image(
+          image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/800px-Instagram_logo.svg.png'),
+          width: 100,
+          height: 40,
+        )
+
       ),
       body: ListView.builder(
         controller: _scrollController,
