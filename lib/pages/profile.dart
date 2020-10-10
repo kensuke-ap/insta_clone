@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insta_clone/widgets/molecules/footer.dart';
+import 'package:insta_clone/widgets/molecules/post_grid.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -15,36 +16,12 @@ class Profile extends StatelessWidget {
               _userInfo(),
               Container(child: Text('profile name', textAlign: TextAlign.left)),
               // PostList
-              pastPostList(),
+              PostGrid(),
             ],
           ),
       ),
 
       bottomNavigationBar: Footer(),
-    );
-  }
-
-  Widget pastPostList() {
-    return Container(
-      child: Expanded(
-        child: SizedBox(
-          height: 200,
-          child: GridView.count(
-              crossAxisCount: 3,
-              mainAxisSpacing: 4,
-              crossAxisSpacing: 4,
-              children: List.generate(18, (index) {
-                return Column(
-                  children: [
-                    Expanded(
-                      child: Image.network('https://koenig-media.raywenderlich.com/uploads/2019/08/GoogleMapsFlutter-feature.png'),
-                    )
-                  ],
-                );
-              })
-          ),
-        ),
-      ),
     );
   }
 

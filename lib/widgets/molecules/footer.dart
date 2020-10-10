@@ -31,14 +31,14 @@ class _FooterState extends State<Footer> {
   @override
   void initState() {
     super.initState();
-    _bottomNavigationBarItems.add(_UpdateActiveState(0));
+    _bottomNavigationBarItems.add(_updateActiveState(0));
     for ( var i = 1; i < _footerItemNames.length; i++) {
-      _bottomNavigationBarItems.add(_UpdateDeactiveState(i));
+      _bottomNavigationBarItems.add(_updateDeactiveState(i));
     }
   }
 
   /// インデックスのアイテムをアクティベートする
-  BottomNavigationBarItem _UpdateActiveState(int index) {
+  BottomNavigationBarItem _updateActiveState(int index) {
     return BottomNavigationBarItem(
         icon: Icon(
           _footerIcons[index],
@@ -54,7 +54,7 @@ class _FooterState extends State<Footer> {
   }
 
   /// インデックスのアイテムをディアクティベートする
-  BottomNavigationBarItem _UpdateDeactiveState(int index) {
+  BottomNavigationBarItem _updateDeactiveState(int index) {
     return BottomNavigationBarItem(
         icon: Icon(
           _footerIcons[index],
@@ -71,8 +71,8 @@ class _FooterState extends State<Footer> {
 
   void _onItemTapped(int index) {
     setState(() {
-      _bottomNavigationBarItems[_selectedIndex] = _UpdateDeactiveState(_selectedIndex);
-      _bottomNavigationBarItems[index] = _UpdateActiveState(index);
+      _bottomNavigationBarItems[_selectedIndex] = _updateDeactiveState(_selectedIndex);
+      _bottomNavigationBarItems[index] = _updateActiveState(index);
       _selectedIndex = index;
 
       // indexをEnum化
