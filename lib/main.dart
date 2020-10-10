@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primaryColor: Colors.black,
       ),
-      initialRoute: '/profile',
+      initialRoute: '/home',
       routes: {
         '/home': (context) => TimeLine(title: 'time line'),
 //        '/exercise': (context) => BlocProvider(child: ExercisePage()),

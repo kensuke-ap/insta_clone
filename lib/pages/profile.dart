@@ -15,7 +15,7 @@ class Profile extends StatelessWidget {
               _userInfo(),
               Container(child: Text('profile name', textAlign: TextAlign.left)),
               // PostList
-              Container(),
+              pastPostList(),
             ],
           ),
       ),
@@ -24,25 +24,54 @@ class Profile extends StatelessWidget {
     );
   }
 
-  Widget _userInfo() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Container(
-          width: 70.0,
-          height: 70.0,
-          decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: NetworkImage('https://i.pinimg.com/564x/2f/fd/c0/2ffdc0b32487b42f771a95ab75ea32ca.jpg'),
-              )
+  Widget pastPostList() {
+    return Container(
+      child: Expanded(
+        child: SizedBox(
+          height: 200,
+          child: GridView.count(
+              crossAxisCount: 3,
+              mainAxisSpacing: 4,
+              crossAxisSpacing: 4,
+              children: List.generate(18, (index) {
+                return Column(
+                  children: [
+                    Expanded(
+                      child: Image.network('https://koenig-media.raywenderlich.com/uploads/2019/08/GoogleMapsFlutter-feature.png'),
+                    )
+                  ],
+                );
+              })
           ),
         ),
-        _userData(5, '投稿'),
-        _userData(99, 'フォロワー'),
-        _userData(142, 'フォロー中'),
-      ],
+      ),
+    );
+  }
+
+  Widget _userInfo() {
+    return Container(
+        height: 100,
+        child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  width: 70.0,
+                  height: 70.0,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: NetworkImage('https://i.pinimg.com/564x/2f/fd/c0/2ffdc0b32487b42f771a95ab75ea32ca.jpg'),
+                      )
+                  ),
+                ),
+                _userData(5, '投稿'),
+                _userData(99, 'フォロワー'),
+                _userData(142, 'フォロー中'),
+              ],
+            )
+        ),
     );
   }
 
@@ -50,9 +79,16 @@ class Profile extends StatelessWidget {
     return Container(
       child: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(child: Text(data.toString()),),
-            Center(child: Text(label),),
+            Container(
+              child: Column(
+                children: [
+                  Center(child: Text(data.toString()),),
+                  Center(child: Text(label),),
+                ],
+              ),
+            ),
           ],
         ),
       ),
