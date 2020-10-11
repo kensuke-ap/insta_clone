@@ -4,6 +4,8 @@ import 'package:insta_clone/pages/neumorphic_app.dart';
 import 'package:insta_clone/pages/profile.dart';
 import 'package:insta_clone/pages/search_page.dart';
 import 'package:insta_clone/pages/activity_page.dart';
+import 'package:insta_clone/enum/root_enum.dart';
+import 'package:insta_clone/pages/comment_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,11 +23,12 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/home',
       routes: {
-        '/home': (context) => TimeLine(title: 'time line'),
-//        '/exercise': (context) => BlocProvider(child: ExercisePage()),
-        '/profile': (context) => Profile(),
-        '/search': (context) => SearchPage(),
-        '/activity': (context) => ActivityPage(),
+        RootEnum.HOME.root: (context) => TimeLine(title: 'time line'),
+        RootEnum.PROFILE.root: (context) => Profile(),
+        RootEnum.SEARCH.root: (context) => SearchPage(),
+        RootEnum.ACTIVITY.root: (context) => ActivityPage(),
+        '/neumorphic': (context) => NeumorphicApp(),
+        RootEnum.COMMENT.root: (context) => CommentPage(),
       },
     );
   }

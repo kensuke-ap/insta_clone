@@ -49,7 +49,7 @@ class _TimeLineState extends State<TimeLine> {
       body: ListView.builder(
         controller: _scrollController,
         itemBuilder: (context, index) {
-          return PostItem(_items[index]);
+          return PostItem(model: _items[index]);
         },
         itemCount: _items.length,
       ),

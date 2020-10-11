@@ -9,8 +9,8 @@ class PostGrid extends StatelessWidget {
           height: 200,
           child: GridView.count(
               crossAxisCount: 3,
-              mainAxisSpacing: 4,
-              crossAxisSpacing: 4,
+              mainAxisSpacing: 2,
+              crossAxisSpacing: 2,
               children: List.generate(44, (index) {
                 return Column(
                   children: [

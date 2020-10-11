@@ -4,7 +4,8 @@ enum RootEnum {
   HOME,
   SEARCH,
   ACTIVITY,
-  PROFILE
+  PROFILE,
+  COMMENT
 }
 
 extension RootEnumExt on RootEnum {
@@ -40,6 +41,9 @@ extension RootEnumExt on RootEnum {
         break;
       case RootEnum.PROFILE:
         return '/profile';
+        break;
+      case RootEnum.COMMENT:
+        return '/comment';
         break;
       default:
         return '/home';

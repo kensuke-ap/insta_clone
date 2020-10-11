@@ -10,7 +10,7 @@ class Footer extends StatefulWidget{
 
 class _FooterState extends State<Footer> {
   int _selectedIndex = 0;
-  final _bottomNavigationBarItems =  <BottomNavigationBarItem>[];
+  List<BottomNavigationBarItem> _bottomNavigationBarItems =  <BottomNavigationBarItem>[];
 
   // アイコン情報
   static const _footerIcons = [
@@ -44,12 +44,7 @@ class _FooterState extends State<Footer> {
           _footerIcons[index],
           color: Colors.black87,
         ),
-        title: Text(
-          _footerItemNames[index],
-          style: TextStyle(
-            color: Colors.black87,
-          ),
-        )
+        label: _footerItemNames[index],
     );
   }
 
@@ -60,12 +55,7 @@ class _FooterState extends State<Footer> {
           _footerIcons[index],
           color: Colors.black26,
         ),
-        title: Text(
-          _footerItemNames[index],
-          style: TextStyle(
-            color: Colors.black26,
-          ),
-        )
+        label: _footerItemNames[index],
     );
   }
 
@@ -82,7 +72,6 @@ class _FooterState extends State<Footer> {
       _rooting(rootEnum);
     });
   }
-
 
   void _rooting(RootEnum rootEnum) {
     switch(rootEnum) {
