@@ -1,26 +1,46 @@
-
+// @JsonSerializable()
 class PostModel {
+  /// ID
+  // @JsonKey(name: 'id')
+  final int id;
 
   /// ユーザーのアイコン
+  // @JsonKey(name: 'user_icon')
   final String userIcon;
 
   /// ユーザー名
+  // @JsonKey(name: 'user_name')
   final String userName;
 
   /// 投稿画像
   /// TODO Listにする
+  // @JsonKey(name: 'post_image')
   final String postImage;
 
   /// 投稿本文
+  // @JsonKey(name: 'post_text')
   final String postText;
 
   /// いいね数
+  // @JsonKey(name: 'like')
   final int like;
 
   /// コメント
+  // @JsonKey(name: 'comment')
   final List<String> comment;
 
-  PostModel({this.userIcon, this.userName, this.postImage, this.postText, this.like, this.comment});
+  PostModel({
+    this.id, 
+    this.userIcon, 
+    this.userName, 
+    this.postImage, 
+    this.postText, 
+    this.like, 
+    this.comment});
+
+  // factory PostModel.fromJson(Map<String, dynamic> json) => _PostModelFromJson(json);
+
+  // Map<String, dynamic> toJson() => _PostModelToJson(this);
 
   static final List<PostModel> dummyData = [
     PostModel(

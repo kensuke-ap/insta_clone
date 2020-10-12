@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:insta_clone/domain/post_model.dart';
 import 'package:insta_clone/pages/comment_page.dart';
 import 'package:like_button/like_button.dart';
-import 'package:insta_clone/enum/root_enum.dart';
 
 class PostItem extends StatefulWidget {
   PostItem({Key key, this.model});

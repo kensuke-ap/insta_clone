@@ -6,6 +6,7 @@ import 'package:insta_clone/pages/search_page.dart';
 import 'package:insta_clone/pages/activity_page.dart';
 import 'package:insta_clone/enum/root_enum.dart';
 import 'package:insta_clone/pages/comment_page.dart';
+import 'package:insta_clone/blocs/bloc_provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/home',
       routes: {
-        RootEnum.HOME.root: (context) => TimeLine(title: 'time line'),
+        RootEnum.HOME.root: (context) => BlocProvider(child: TimeLine(title: 'time line')),
         RootEnum.PROFILE.root: (context) => Profile(),
         RootEnum.SEARCH.root: (context) => SearchPage(),
         RootEnum.ACTIVITY.root: (context) => ActivityPage(),

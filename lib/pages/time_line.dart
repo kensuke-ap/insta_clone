@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:insta_clone/domain/post_model.dart';
 import 'package:insta_clone/widgets/molecules/post_item.dart';
 import 'package:insta_clone/widgets/molecules/footer.dart';
+import 'package:insta_clone/blocs/bloc_provider.dart';
 
 class TimeLine extends StatefulWidget {
   TimeLine({Key key, this.title}) : super(key: key);
@@ -37,6 +38,8 @@ class _TimeLineState extends State<TimeLine> {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of(context).bloc;
+
     return Scaffold(
       appBar: AppBar(
         title: Image(
@@ -46,12 +49,19 @@ class _TimeLineState extends State<TimeLine> {
         )
 
       ),
-      body: ListView.builder(
-        controller: _scrollController,
-        itemBuilder: (context, index) {
-          return PostItem(model: _items[index]);
-        },
-        itemCount: _items.length,
+      body: StreamBuilder<List<PostModel>>(
+        stream: bloc.postModelStream,
+        builder: (context, snapshot) {
+          if(!snapshot.hasData) return initialData();
+          List<PostModel> modelList = snapshot.data;
+          return ListView.builder(
+            controller: _scrollController,
+            itemBuilder: (context, index) {
+              return PostItem(model: modelList[index]);
+            },
+            itemCount: _items.length,
+          );
+        }
       ),
 
       bottomNavigationBar: Footer(),
@@ -69,5 +79,9 @@ class _TimeLineState extends State<TimeLine> {
       });
       _isLoading = false;
     });
+  }
+
+  Widget initialData() {
+    return Center(child: Text('loading'),);
   }
 }
