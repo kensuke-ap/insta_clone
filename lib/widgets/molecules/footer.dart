@@ -10,7 +10,7 @@ class Footer extends StatefulWidget{
 
 class _FooterState extends State<Footer> {
   int _selectedIndex = 0;
-  final _bottomNavigationBarItems =  <BottomNavigationBarItem>[];
+  List<BottomNavigationBarItem> _bottomNavigationBarItems =  <BottomNavigationBarItem>[];
 
   // アイコン情報
   static const _footerIcons = [
@@ -31,48 +31,38 @@ class _FooterState extends State<Footer> {
   @override
   void initState() {
     super.initState();
-    _bottomNavigationBarItems.add(_UpdateActiveState(0));
+    _bottomNavigationBarItems.add(_updateActiveState(0));
     for ( var i = 1; i < _footerItemNames.length; i++) {
-      _bottomNavigationBarItems.add(_UpdateDeactiveState(i));
+      _bottomNavigationBarItems.add(_updateDeactiveState(i));
     }
   }
 
   /// インデックスのアイテムをアクティベートする
-  BottomNavigationBarItem _UpdateActiveState(int index) {
+  BottomNavigationBarItem _updateActiveState(int index) {
     return BottomNavigationBarItem(
         icon: Icon(
           _footerIcons[index],
           color: Colors.black87,
         ),
-        title: Text(
-          _footerItemNames[index],
-          style: TextStyle(
-            color: Colors.black87,
-          ),
-        )
+        label: _footerItemNames[index],
     );
   }
 
   /// インデックスのアイテムをディアクティベートする
-  BottomNavigationBarItem _UpdateDeactiveState(int index) {
+  BottomNavigationBarItem _updateDeactiveState(int index) {
     return BottomNavigationBarItem(
         icon: Icon(
           _footerIcons[index],
           color: Colors.black26,
         ),
-        title: Text(
-          _footerItemNames[index],
-          style: TextStyle(
-            color: Colors.black26,
-          ),
-        )
+        label: _footerItemNames[index],
     );
   }
 
   void _onItemTapped(int index) {
     setState(() {
-      _bottomNavigationBarItems[_selectedIndex] = _UpdateDeactiveState(_selectedIndex);
-      _bottomNavigationBarItems[index] = _UpdateActiveState(index);
+      _bottomNavigationBarItems[_selectedIndex] = _updateDeactiveState(_selectedIndex);
+      _bottomNavigationBarItems[index] = _updateActiveState(index);
       _selectedIndex = index;
 
       // indexをEnum化
@@ -82,7 +72,6 @@ class _FooterState extends State<Footer> {
       _rooting(rootEnum);
     });
   }
-
 
   void _rooting(RootEnum rootEnum) {
     switch(rootEnum) {
